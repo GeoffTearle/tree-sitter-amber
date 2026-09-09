@@ -178,6 +178,7 @@ module.exports = grammar({
             seq('unsafe', $._expression),
             seq('trust', $._expression),
             seq('silent', $._expression),
+            seq('suppress', $._expression),
             seq('sudo', $._expression),
             seq('nameof', $._expression),
             seq('len', $._expression),
@@ -251,6 +252,7 @@ module.exports = grammar({
             repeat1(
                 choice(
                     "silent",
+                    "suppress",
                     "trust",
                     "sudo",
                 )

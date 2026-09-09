@@ -1570,6 +1570,19 @@
             "members": [
               {
                 "type": "STRING",
+                "value": "suppress"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
                 "value": "sudo"
               },
               {
@@ -2196,6 +2209,10 @@
               {
                 "type": "STRING",
                 "value": "silent"
+              },
+              {
+                "type": "STRING",
+                "value": "suppress"
               },
               {
                 "type": "STRING",

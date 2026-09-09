@@ -2704,6 +2704,10 @@
     "named": false
   },
   {
+    "type": "suppress",
+    "named": false
+  },
+  {
     "type": "test",
     "named": false
   },
