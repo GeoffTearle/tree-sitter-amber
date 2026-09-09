@@ -29,6 +29,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "test_block"
+            },
+            {
+              "type": "SYMBOL",
               "name": "_statement"
             }
           ]
@@ -202,6 +206,31 @@
                   "value": ")"
                 }
               ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "test_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "test"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "string"
             },
             {
               "type": "BLANK"

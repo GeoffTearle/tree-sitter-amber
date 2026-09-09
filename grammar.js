@@ -14,6 +14,7 @@ module.exports = grammar({
             $.import_statement,
             $.function_definition,
             $.main_block,
+            $.test_block,
             $._statement
         ), optional(";")),
 
@@ -44,6 +45,8 @@ module.exports = grammar({
             optional(seq("(", $.variable, ")")),
             $.block
         ),
+
+        test_block: $ => seq("test", optional($.string), $.block),
 
         builtin_stmt: $ => choice(
             prec.right(seq("cd", $._expression, optional($.handler))),

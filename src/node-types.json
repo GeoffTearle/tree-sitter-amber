@@ -1847,6 +1847,10 @@
           "named": true
         },
         {
+          "type": "test_block",
+          "named": true
+        },
+        {
           "type": "unop",
           "named": true
         },
@@ -2057,6 +2061,25 @@
         },
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "test_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -2669,6 +2692,10 @@
   },
   {
     "type": "sudo",
+    "named": false
+  },
+  {
+    "type": "test",
     "named": false
   },
   {
