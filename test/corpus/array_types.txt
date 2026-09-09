@@ -1,0 +1,86 @@
+================================================================================
+Array return type
+================================================================================
+
+fun f(): [Text] { return [] }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (variable)
+    parameters: (function_parameter_list)
+    (type_name
+      (type_name_symbol))
+    body: (block
+      (function_control_flow
+        (array)))))
+
+================================================================================
+Failable array return type
+================================================================================
+
+fun f(): [Num]? { fail 1 }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (variable)
+    parameters: (function_parameter_list)
+    (type_name
+      (type_name_symbol))
+    body: (block
+      (function_control_flow
+        (number)))))
+
+================================================================================
+Cast to an array type
+================================================================================
+
+const a = b as [Text]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (variable_init
+    (variable_assignment
+      (variable)
+      (keyword_binop
+        (variable)
+        (type_name
+          (type_name_symbol))))))
+
+================================================================================
+Type check against an array type
+================================================================================
+
+const a = b is [Text]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (variable_init
+    (variable_assignment
+      (variable)
+      (keyword_binop
+        (variable)
+        (type_name
+          (type_name_symbol))))))
+
+================================================================================
+Cast to a simple type is unaffected
+================================================================================
+
+const a = b as Num
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (variable_init
+    (variable_assignment
+      (variable)
+      (keyword_binop
+        (variable)
+        (type_name
+          (type_name_symbol))))))

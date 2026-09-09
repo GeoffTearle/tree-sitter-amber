@@ -72,10 +72,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -156,10 +152,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -282,10 +274,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -393,10 +381,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -533,10 +517,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -647,10 +627,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -982,10 +958,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -1073,10 +1045,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -1157,10 +1125,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -1278,10 +1242,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -1494,10 +1454,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -1578,10 +1534,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -1668,10 +1620,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -1752,10 +1700,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -1891,10 +1835,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -2013,10 +1953,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -2101,10 +2037,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -2211,10 +2143,6 @@
           "named": true
         },
         {
-          "type": "type_name",
-          "named": true
-        },
-        {
           "type": "unop",
           "named": true
         },
@@ -2299,10 +2227,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {
@@ -2405,10 +2329,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         },
         {

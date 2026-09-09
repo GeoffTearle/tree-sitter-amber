@@ -1712,7 +1712,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_expression"
+                "name": "type_name"
               }
             ]
           }
@@ -1733,7 +1733,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_expression"
+                "name": "type_name"
               }
             ]
           }
@@ -2063,10 +2063,6 @@
         {
           "type": "SYMBOL",
           "name": "number"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "type_name"
         },
         {
           "type": "SYMBOL",

@@ -183,8 +183,8 @@ module.exports = grammar({
         keyword_binop: $ => choice(
             prec.left(2, seq($._expression, 'and', $._expression)),
             prec.left(2, seq($._expression, 'or', $._expression)),
-            prec.left(1, seq($._expression, 'is', $._expression)),
-            prec.left(1, seq($._expression, 'as', $._expression)),
+            prec.left(1, seq($._expression, 'is', $.type_name)),
+            prec.left(1, seq($._expression, 'as', $.type_name)),
         ),
 
         variable: $ => /\w+/,
@@ -246,7 +246,6 @@ module.exports = grammar({
             $.boolean,
             $.null,
             $.number,
-            $.type_name,
             $.function_call,
             $.if_ternary,
             $.status,
