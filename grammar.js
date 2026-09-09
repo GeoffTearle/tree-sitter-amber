@@ -3,6 +3,10 @@ module.exports = grammar({
 
     extras: $ => [$.comment, /\s/],
 
+    conflicts: $ => [
+        [$.array, $.subscript],
+    ],
+
     rules: {
         source_file: $ => repeat($._global_statement),
 
