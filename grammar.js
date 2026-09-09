@@ -33,9 +33,10 @@ module.exports = grammar({
             $._expression
         ), optional(";"))),
 
+        _brace_block: $ => seq("{", repeat($._statement), "}"),
         block: $ => choice(
-            seq("{", repeat($._statement), "}"),
-            seq(":", $._statement)
+            $._brace_block,
+            seq(":", choice($._statement, $._brace_block))
         ),
 
         main_block: $ => seq(
@@ -44,9 +45,16 @@ module.exports = grammar({
             $.block
         ),
 
-        builtin_stmt: $ => seq(choice("cd", "echo", "exit"), $._expression),
+        builtin_stmt: $ => choice(
+            prec.right(seq("cd", $._expression, optional($.handler))),
+            seq(choice("echo", "exit"), $._expression)
+        ),
 
-        mv_stmt: $ => seq("mv", $._expression, optional(","), $._expression),
+        mv_stmt: $ => prec.right(seq(
+            "mv",
+            choice($.parameter_list, seq($._expression, optional(","), $._expression)),
+            optional($.handler)
+        )),
 
         reference: $ => "ref",
         function_parameter_list_item: $ => prec.left(seq(

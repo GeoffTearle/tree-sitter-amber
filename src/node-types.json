@@ -316,7 +316,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -345,6 +345,10 @@
         },
         {
           "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "handler",
           "named": true
         },
         {
@@ -1418,6 +1422,10 @@
           "named": true
         },
         {
+          "type": "handler",
+          "named": true
+        },
+        {
           "type": "if_ternary",
           "named": true
         },
@@ -1431,6 +1439,10 @@
         },
         {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
           "named": true
         },
         {

@@ -1,0 +1,40 @@
+================================================================================
+Colon arm carrying a brace block
+================================================================================
+
+if {
+    a: { echo "one" }
+    else: echo "other"
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_chain
+    (variable)
+    (block
+      (builtin_stmt
+        (string
+          (string_content))))
+    (block
+      (builtin_stmt
+        (string
+          (string_content))))))
+
+================================================================================
+Colon arm carrying a single statement is unaffected
+================================================================================
+
+if {
+    a: echo "one"
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_chain
+    (variable)
+    (block
+      (builtin_stmt
+        (string
+          (string_content))))))
