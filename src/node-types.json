@@ -72,6 +72,10 @@
           "named": true
         },
         {
+          "type": "type_name_symbol",
+          "named": true
+        },
+        {
           "type": "unop",
           "named": true
         },

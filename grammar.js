@@ -46,7 +46,10 @@ module.exports = grammar({
             $.block
         ),
 
-        test_block: $ => seq("test", optional($.string), $.block),
+        test_block: $ => seq("test", choice(
+            seq($.string, $.block),
+            alias($._brace_block, $.block)
+        )),
 
         builtin_stmt: $ => choice(
             prec.right(seq("cd", $._expression, optional($.handler))),
@@ -100,7 +103,7 @@ module.exports = grammar({
             field("name", $.variable),
             field("parameters", $.function_parameter_list),
             optional(seq(":", $.type_name)),
-            field("body", $.block),
+            field("body", alias($._brace_block, $.block)),
         ),
 
         function_control_flow: $ => seq(choice("return", "fail"), $._expression),
@@ -157,7 +160,10 @@ module.exports = grammar({
             seq("[", $.type_name_symbol, "]")
         ), optional("?"))),
         status: $ => prec.right(seq(token("status"), optional(seq("(", ")")))),
-        array: $ => seq("[", optional(seq($._expression, repeat(seq(",", $._expression)), optional(","))), "]"),
+        array: $ => seq("[", optional(choice(
+            $.type_name_symbol,
+            seq($._expression, repeat(seq(",", $._expression)), optional(","))
+        )), "]"),
 
         function_call: $ => prec.right(2, seq(
             field("name", $.variable),
