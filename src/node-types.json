@@ -1874,6 +1874,11 @@
     }
   },
   {
+    "type": "status",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "string",
     "named": true,
     "fields": {},
@@ -2680,7 +2685,7 @@
   },
   {
     "type": "status",
-    "named": true
+    "named": false
   },
   {
     "type": "string_content",

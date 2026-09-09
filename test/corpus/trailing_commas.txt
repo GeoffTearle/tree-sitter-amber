@@ -1,0 +1,96 @@
+================================================================================
+Trailing comma in an array literal
+================================================================================
+
+const a = ["x", "y",]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (variable_init
+    (variable_assignment
+      (variable)
+      (array
+        (string
+          (string_content))
+        (string
+          (string_content))))))
+
+================================================================================
+Array literal without a trailing comma is unaffected
+================================================================================
+
+const a = ["x", "y"]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (variable_init
+    (variable_assignment
+      (variable)
+      (array
+        (string
+          (string_content))
+        (string
+          (string_content))))))
+
+================================================================================
+Trailing comma in call arguments
+================================================================================
+
+const a = f("x", "y",)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (variable_init
+    (variable_assignment
+      (variable)
+      (function_call
+        name: (variable)
+        (parameter_list
+          (string
+            (string_content))
+          (string
+            (string_content)))))))
+
+================================================================================
+Trailing comma in a parameter list
+================================================================================
+
+fun f(a: Text, b: Text,): Text { return a }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (variable)
+    parameters: (function_parameter_list
+      (function_parameter_list_item
+        (variable)
+        (type_name
+          (type_name_symbol)))
+      (function_parameter_list_item
+        (variable)
+        (type_name
+          (type_name_symbol))))
+    (type_name
+      (type_name_symbol))
+    body: (block
+      (function_control_flow
+        (variable)))))
+
+================================================================================
+Trailing comma in an import list
+================================================================================
+
+import { assert, } from "std/test"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (import_statement
+    (import_item
+      (variable))
+    (string
+      (string_content))))

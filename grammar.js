@@ -83,7 +83,8 @@ module.exports = grammar({
                             ",",
                             $.function_parameter_list_item
                         )
-                    )
+                    ),
+                    optional(",")
                 )
             ),
             ")"
@@ -111,7 +112,7 @@ module.exports = grammar({
             choice(
                 seq(
                     "{",
-                    optional(seq($.import_item, repeat(seq(",", $.import_item)))),
+                    optional(seq($.import_item, repeat(seq(",", $.import_item)), optional(","))),
                     "}",
                     "from",
                     $.string,
@@ -122,7 +123,7 @@ module.exports = grammar({
 
         parameter_list: $ => seq(
             "(",
-            optional(seq($._expression, repeat(seq(",", $._expression)))),
+            optional(seq($._expression, repeat(seq(",", $._expression)), optional(","))),
             ")",
         ),
 
@@ -155,8 +156,8 @@ module.exports = grammar({
             $.type_name_symbol,
             seq("[", $.type_name_symbol, "]")
         ), optional("?"))),
-        status: $ => token("status"),
-        array: $ => seq("[", optional(seq($._expression, repeat(seq(",", $._expression)))), "]"),
+        status: $ => prec.right(seq(token("status"), optional(seq("(", ")")))),
+        array: $ => seq("[", optional(seq($._expression, repeat(seq(",", $._expression)), optional(","))), "]"),
 
         function_call: $ => prec.right(2, seq(
             field("name", $.variable),
