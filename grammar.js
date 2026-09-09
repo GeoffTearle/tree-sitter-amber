@@ -115,10 +115,11 @@ module.exports = grammar({
             ")",
         ),
 
+        range: $ => prec.left(4, seq($._expression, choice("..", "..="), $._expression)),
         subscript: $ => seq("[", $._expression, "]"),
         subscript_expression: $ => prec(5, seq($._expression, $.subscript)),
 
-        variable_init: $ => seq(choice("const", "let"), $.variable_assignment),
+        variable_init: $ => seq(optional("pub"), choice("const", "let"), $.variable_assignment),
         variable_assignment: $ => prec(3, seq(
             $.variable, optional($.subscript),
             choice("=", "+=", "-=", "*=", "/=", "%="),
@@ -139,10 +140,10 @@ module.exports = grammar({
         null: $ => token("null"),
         number: $ => token(seq(optional(/[-+]/), /\d+(\.\d+)?/)),
         type_name_symbol: $ => choice("Text", "Num", "Int", "Bool", "Null"),
-        type_name: $ => prec.left(choice(
+        type_name: $ => prec.left(seq(choice(
             $.type_name_symbol,
             seq("[", $.type_name_symbol, "]")
-        )),
+        ), optional("?"))),
         status: $ => token("status"),
         array: $ => seq("[", optional(seq($._expression, repeat(seq(",", $._expression)))), "]"),
 
@@ -255,6 +256,7 @@ module.exports = grammar({
             $.binop,
             $.keyword_binop,
             $.subscript_expression,
+            $.range,
             $.command,
             $.command_modifier_block,
             $.array,

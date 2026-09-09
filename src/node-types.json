@@ -56,6 +56,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -136,6 +140,10 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -254,6 +262,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "shebang",
           "named": true
         },
@@ -365,6 +377,10 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -501,6 +517,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -611,6 +631,10 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -762,6 +786,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "reference",
           "named": true
         },
@@ -858,6 +886,11 @@
     }
   },
   {
+    "type": "handler_propagation",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "handler_succeeded",
     "named": true,
     "fields": {},
@@ -930,6 +963,10 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -1020,6 +1057,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -1100,6 +1141,10 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -1220,6 +1265,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -1300,6 +1349,10 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -1425,6 +1478,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -1508,6 +1565,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -1588,6 +1649,97 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
+          "named": true
+        },
+        {
+          "type": "status",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        },
+        {
+          "type": "unop",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "range",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array",
+          "named": true
+        },
+        {
+          "type": "binop",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_expr",
+          "named": true
+        },
+        {
+          "type": "command",
+          "named": true
+        },
+        {
+          "type": "command_modifier_block",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "if_ternary",
+          "named": true
+        },
+        {
+          "type": "keyword_binop",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -1719,6 +1871,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "shebang",
           "named": true
         },
@@ -1841,6 +1997,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -1921,6 +2081,10 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -2031,6 +2195,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -2111,6 +2279,10 @@
         },
         {
           "type": "parentheses",
+          "named": true
+        },
+        {
+          "type": "range",
           "named": true
         },
         {
@@ -2220,6 +2392,10 @@
           "named": true
         },
         {
+          "type": "range",
+          "named": true
+        },
+        {
           "type": "status",
           "named": true
         },
@@ -2303,6 +2479,14 @@
     "named": false
   },
   {
+    "type": "..",
+    "named": false
+  },
+  {
+    "type": "..=",
+    "named": false
+  },
+  {
     "type": "/",
     "named": false
   },
@@ -2340,6 +2524,10 @@
   },
   {
     "type": ">=",
+    "named": false
+  },
+  {
+    "type": "?",
     "named": false
   },
   {
@@ -2450,10 +2638,6 @@
   {
     "type": "fun",
     "named": false
-  },
-  {
-    "type": "handler_propagation",
-    "named": true
   },
   {
     "type": "if",

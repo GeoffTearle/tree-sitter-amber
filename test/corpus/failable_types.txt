@@ -1,0 +1,62 @@
+================================================================================
+Failable return type
+================================================================================
+
+pub fun f(): Text? {
+    return "x"
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (variable)
+    parameters: (function_parameter_list)
+    (type_name
+      (type_name_symbol))
+    body: (block
+      (function_control_flow
+        (string
+          (string_content))))))
+
+================================================================================
+Failable Null return type
+================================================================================
+
+fun f(): Null? {
+    echo "x"
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (variable)
+    parameters: (function_parameter_list)
+    (type_name
+      (type_name_symbol))
+    body: (block
+      (builtin_stmt
+        (string
+          (string_content))))))
+
+================================================================================
+Infallible return type is unaffected
+================================================================================
+
+fun f(): Text {
+    return "x"
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (variable)
+    parameters: (function_parameter_list)
+    (type_name
+      (type_name_symbol))
+    body: (block
+      (function_control_flow
+        (string
+          (string_content))))))
