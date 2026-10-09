@@ -1279,7 +1279,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "µ+[A-Z0-9_]*"
+          "value": "\\uE000+[A-Z0-9_]*"
         }
       ]
     },
@@ -1973,7 +1973,7 @@
           },
           {
             "type": "PATTERN",
-            "value": "µ+[A-Z0-9_]*"
+            "value": "\\uE000+[A-Z0-9_]*"
           }
         ]
       }
@@ -2157,7 +2157,7 @@
         "value": 2,
         "content": {
           "type": "PATTERN",
-          "value": "[^\\\\${µ-]+"
+          "value": "[^\\\\${\\uE000-]+"
         }
       }
     },
@@ -2178,7 +2178,7 @@
                 "type": "ALIAS",
                 "content": {
                   "type": "STRING",
-                  "value": "µ"
+                  "value": ""
                 },
                 "named": false,
                 "value": "$"
@@ -2215,7 +2215,7 @@
                       "value": 3,
                       "content": {
                         "type": "PATTERN",
-                        "value": "µ+[A-Z0-9_]*"
+                        "value": "\\uE000+[A-Z0-9_]*"
                       }
                     }
                   },
@@ -2241,7 +2241,7 @@
                     "value": 3,
                     "content": {
                       "type": "STRING",
-                      "value": "µ"
+                      "value": ""
                     }
                   }
                 },

@@ -1,11 +1,13 @@
-// ast-grep rewrites every `$` in a search pattern to its expando character, `µ`, before parsing.
-// Real Amber never contains `µ`, so these forms only ever parse in patterns: `$NAME`/`$$$ARGS`
-// become `µNAME`/`µµµARGS`, and a command's `$` delimiters become `µ`.
-const METAVARIABLE = /µ+[A-Z0-9_]*/;
+// ast-grep rewrites every `$` in a search pattern to its expando character before parsing, so
+// `$NAME`/`$$$ARGS` arrive as EXPANDO-led names and a command's `$` delimiters as EXPANDO. U+E000 is
+// Private Use Area: unlike a printable character, real Amber has no reason to contain it, even raw
+// inside a `$ … $` command, where any character is legal.
+const EXPANDO = "\uE000";
+const METAVARIABLE = /\uE000+[A-Z0-9_]*/;
 // Inside a command, whitespace belongs to `command_content` (prec 2). Outranking it lets a pattern's
-// closing `µ` take the whitespace after a metavariable, so `$ ls $$$X $` needs no trailing content
-// node to match. Whitespace straight after the opening `µ` still lands in the metavariable's text,
-// which ast-grep then fails to recognise, so a command pattern must open with literal text.
+// closing EXPANDO take the whitespace after a metavariable, so `$ ls $$$X $` needs no trailing content
+// node to match. Whitespace straight after the opening EXPANDO still lands in the metavariable's text,
+// which ast-grep then fails to recognise.
 const PATTERN_PREC = 3;
 
 module.exports = grammar({
@@ -244,9 +246,9 @@ module.exports = grammar({
 
         escape_sequence: $ => token(seq("\\", optional(/./))),
         interpolation: $ => prec(2, seq("{", $._expression, "}")),
-        command_content: $ => token.immediate(prec(2, /[^\\${µ-]+/)),
+        command_content: $ => token.immediate(prec(2, /[^\\${\uE000-]+/)),
         command: $ => prec.right(seq(
-            choice("$", alias("µ", "$")),
+            choice("$", alias(EXPANDO, "$")),
             repeat(
                 choice(
                     $.escape_sequence,
@@ -256,7 +258,7 @@ module.exports = grammar({
                     alias(token(prec(PATTERN_PREC, METAVARIABLE)), $.variable),
                 ),
             ),
-            choice("$", alias(token(prec(PATTERN_PREC, "µ")), "$")),
+            choice("$", alias(token(prec(PATTERN_PREC, EXPANDO)), "$")),
             optional($.handler)
         )),
         command_modifier_block: $ => seq(
