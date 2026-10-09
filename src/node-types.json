@@ -429,6 +429,10 @@
         {
           "type": "interpolation",
           "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
         }
       ]
     }

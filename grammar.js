@@ -1,3 +1,13 @@
+// ast-grep rewrites every `$` in a search pattern to its expando character, `µ`, before parsing.
+// Real Amber never contains `µ`, so these forms only ever parse in patterns: `$NAME`/`$$$ARGS`
+// become `µNAME`/`µµµARGS`, and a command's `$` delimiters become `µ`.
+const METAVARIABLE = /µ+[A-Z0-9_]*/;
+// Inside a command, whitespace belongs to `command_content` (prec 2). Outranking it lets a pattern's
+// closing `µ` take the whitespace after a metavariable, so `$ ls $$$X $` needs no trailing content
+// node to match. Whitespace straight after the opening `µ` still lands in the metavariable's text,
+// which ast-grep then fails to recognise, so a command pattern must open with literal text.
+const PATTERN_PREC = 3;
+
 module.exports = grammar({
     name: "amber",
 
@@ -154,7 +164,7 @@ module.exports = grammar({
         boolean: $ => token(choice("true", "false")),
         null: $ => token("null"),
         number: $ => token(seq(optional(/[-+]/), /\d+(\.\d+)?/)),
-        type_name_symbol: $ => choice("Text", "Num", "Int", "Bool", "Null"),
+        type_name_symbol: $ => choice("Text", "Num", "Int", "Bool", "Null", METAVARIABLE),
         type_name: $ => prec.left(seq(choice(
             $.type_name_symbol,
             seq("[", $.type_name_symbol, "]")
@@ -206,7 +216,7 @@ module.exports = grammar({
             prec.left(1, seq($._expression, 'as', $.type_name)),
         ),
 
-        variable: $ => /\w+/,
+        variable: $ => token(choice(/\w+/, METAVARIABLE)),
 
         string_content: $ => token.immediate(prec(2, /[^\\"{]+/)),
         string: $ => seq(
@@ -234,18 +244,19 @@ module.exports = grammar({
 
         escape_sequence: $ => token(seq("\\", optional(/./))),
         interpolation: $ => prec(2, seq("{", $._expression, "}")),
-        command_content: $ => token.immediate(prec(2, /[^\\${-]+/)),
+        command_content: $ => token.immediate(prec(2, /[^\\${µ-]+/)),
         command: $ => prec.right(seq(
-            "$",
+            choice("$", alias("µ", "$")),
             repeat(
                 choice(
                     $.escape_sequence,
                     $.command_option,
                     $.interpolation,
                     $.command_content,
+                    alias(token(prec(PATTERN_PREC, METAVARIABLE)), $.variable),
                 ),
             ),
-            "$",
+            choice("$", alias(token(prec(PATTERN_PREC, "µ")), "$")),
             optional($.handler)
         )),
         command_modifier_block: $ => seq(

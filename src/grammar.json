@@ -1276,6 +1276,10 @@
         {
           "type": "STRING",
           "value": "Null"
+        },
+        {
+          "type": "PATTERN",
+          "value": "µ+[A-Z0-9_]*"
         }
       ]
     },
@@ -1959,8 +1963,20 @@
       ]
     },
     "variable": {
-      "type": "PATTERN",
-      "value": "\\w+"
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "\\w+"
+          },
+          {
+            "type": "PATTERN",
+            "value": "µ+[A-Z0-9_]*"
+          }
+        ]
+      }
     },
     "string_content": {
       "type": "IMMEDIATE_TOKEN",
@@ -2141,7 +2157,7 @@
         "value": 2,
         "content": {
           "type": "PATTERN",
-          "value": "[^\\\\${-]+"
+          "value": "[^\\\\${µ-]+"
         }
       }
     },
@@ -2152,8 +2168,22 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "STRING",
-            "value": "$"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "$"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "STRING",
+                  "value": "µ"
+                },
+                "named": false,
+                "value": "$"
+              }
+            ]
           },
           {
             "type": "REPEAT",
@@ -2175,13 +2205,50 @@
                 {
                   "type": "SYMBOL",
                   "name": "command_content"
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "TOKEN",
+                    "content": {
+                      "type": "PREC",
+                      "value": 3,
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "µ+[A-Z0-9_]*"
+                      }
+                    }
+                  },
+                  "named": true,
+                  "value": "variable"
                 }
               ]
             }
           },
           {
-            "type": "STRING",
-            "value": "$"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "$"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "PREC",
+                    "value": 3,
+                    "content": {
+                      "type": "STRING",
+                      "value": "µ"
+                    }
+                  }
+                },
+                "named": false,
+                "value": "$"
+              }
+            ]
           },
           {
             "type": "CHOICE",
